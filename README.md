@@ -17,3 +17,12 @@ docker compose up -d
 docker compose ps
 curl -s http://127.0.0.1:8080/
 python3 ../scripts/healthcheck.py
+
+## 告警演示
+
+```bash
+cd compose
+docker compose stop node-exporter
+# 约 1～2 分钟后
+curl -s 'http://127.0.0.1:9090/api/v1/alerts'
+docker compose start node-exporter
